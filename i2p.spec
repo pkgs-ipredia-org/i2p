@@ -20,9 +20,7 @@ I2P is an anonymous network, exposing a simple layer that applications can use t
 
 
 %build
-%configure
-make %{?_smp_mflags}
-
+ant pkg
 
 %install
 rm -rf $RPM_BUILD_ROOT
