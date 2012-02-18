@@ -23,11 +23,11 @@ I2P is an anonymous network, exposing a simple layer that applications can use t
 ant pkg
 
 %install
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 java -jar i2pinstall* -console
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
 
 %files
