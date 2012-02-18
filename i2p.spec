@@ -4,7 +4,7 @@ Release:	1%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
-#License:	
+License:	Public domain and BSD and GPL + exeption and Artistic MIT and check the source
 URL:		http://www.i2p2.de
 Source0:	http://mirror.i2p2.de/i2psource_0.8.12.tar.bz2
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
