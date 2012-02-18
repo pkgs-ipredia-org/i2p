@@ -4,7 +4,7 @@ Release:	1%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
-License:	
+#License:	
 URL:		http://www.i2p2.de
 Source0:	
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
