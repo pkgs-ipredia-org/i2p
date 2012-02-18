@@ -40,5 +40,5 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* 2012-02-18 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.12.18-1
+* 2012-02-18 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-1
 - Initial spec template
