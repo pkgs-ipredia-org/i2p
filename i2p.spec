@@ -6,7 +6,8 @@ Summary:	I2P is an anonymous network
 Group:		Applications/Internet
 License:	Public domain and BSD and GPL + exeption and Artistic MIT and Apache License 2.0 and Eclipse Public License 1.0 and check the source
 URL:		http://www.i2p2.de
-Source0:	http://mirror.i2p2.de/i2psource_0.8.12.tar.bz2
+Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
+Source1:	http://dist.codehaus.org/jetty/jetty-5.1.x/jetty-5.1.15.tgz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires:	ant
@@ -20,6 +21,8 @@ I2P is an anonymous network, exposing a simple layer that applications can use t
 
 
 %build
+# Add Jetty source before build script ask about it
+cp %{SOURCE1} apps/jetty/
 ant pkg
 
 %install
