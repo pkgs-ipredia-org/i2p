@@ -41,6 +41,26 @@ sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/runplain.sh
 sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/wrapper.config
 sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter
 
+# Install i2p service (eq 'i2prouter install')
+mkdir -p $RPM_BUILD_ROOT%{_initrddir}
+install -m755 $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter $RPM_BUILD_ROOT%{_initrddir}/i2p
+
+# Remove redundant functionality from i2p service
+sed -i "s:^.*gettext.*install.*Install to start automatically.*::" $RPM_BUILD_ROOT%{_initrddir}/i2p
+sed -i "s:^.*gettext.*remove.*Uninstall.*::" $RPM_BUILD_ROOT%{_initrddir}/i2p
+sed -i "s: | install | remove::" $RPM_BUILD_ROOT%{_initrddir}/i2p
+
+%post
+# Register the i2p service
+/sbin/chkconfig --add i2p
+
+%preun
+# Unregister the i2p service
+if [ $1 = 0 ]; then
+	/sbin/service i2p stop > /dev/null 2>&1
+	/sbin/chkconfig --del i2p
+fi
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -49,9 +69,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc
 %{_bindir}/%{name}/*
-
+%{_initrddir}/i2p
 
 %changelog
+* Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-2
+- Add i2p init.d service
+
 * Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-1
 - Initial package
 
