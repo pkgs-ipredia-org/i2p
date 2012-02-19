@@ -27,7 +27,19 @@ ant pkg
 
 %install
 rm -rf $RPM_BUILD_ROOT
+echo "------!!! Install in !!!------"
+echo "Folder: $RPM_BUILD_ROOT%{_bindir}/%{name}"
 java -jar i2pinstall* -console
+
+# Remove problematic and unnecessary files
+rm $RPM_BUILD_ROOT%{_bindir}/%{name}/.installationinformation
+rm -rf $RPM_BUILD_ROOT%{_bindir}/%{name}/Uninstaller
+
+# Strip buildroot from files
+sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/eepget
+sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/runplain.sh
+sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/wrapper.config
+sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -36,7 +48,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc
-
+%{_bindir}/%{name}/*
 
 
 %changelog
