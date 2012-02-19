@@ -68,10 +68,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc
-%{_bindir}/%{name}/*
+%{_bindir}/%{name}
 %{_initrddir}/i2p
 
 %changelog
+* Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-3
+- Include installation folder in %files
+
 * Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-2
 - Add i2p init.d service
 
