@@ -52,5 +52,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-1
+- Initial package
+
 * Sat Feb 18 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-1
 - Initial spec template
