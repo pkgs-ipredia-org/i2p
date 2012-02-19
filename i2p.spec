@@ -1,6 +1,6 @@
 Name:		i2p
 Version:	0.8.12
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
