@@ -47,12 +47,12 @@ mkdir -p $RPM_BUILD_ROOT%{_initrddir}
 install -m755 $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Remove redundant functionality from i2p service
-sed -i "s:^.*gettext.*install.*Install to start automatically.*::" $RPM_BUILD_ROOT%{_initrddir}/i2p
-sed -i "s:^.*gettext.*remove.*Uninstall.*::" $RPM_BUILD_ROOT%{_initrddir}/i2p
-sed -i "s: | install | remove::" $RPM_BUILD_ROOT%{_initrddir}/i2p
+sed -i "s:^.*gettext.*install.*Install to start automatically.*::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+sed -i "s:^.*gettext.*remove.*Uninstall.*::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+sed -i "s: | install | remove::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Use i2p user to run the service
-sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":" $RPM_BUILD_ROOT%{_initrddir}/i2p
+sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Fix for upstream bug (runuser and a secure (without a shell) service account)
 # Fix: add a shell with -s /bin/sh
