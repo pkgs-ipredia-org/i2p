@@ -1,6 +1,6 @@
 Name:		i2p
 Version:	0.8.12
-Release:	3%{?dist}
+Release:	5%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
@@ -29,7 +29,8 @@ ant pkg
 rm -rf $RPM_BUILD_ROOT
 echo "------!!! Install in !!!------"
 echo "Folder: $RPM_BUILD_ROOT%{_bindir}/%{name}"
-java -jar i2pinstall* -console
+# java -jar i2pinstall* -console
+expect -c "spawn java -jar i2pinstall.exe -console; expect redisplay; send \"1\r\"; expect path; send \"$RPM_BUILD_ROOT%{_bindir}/%{name}\r\"; expect redisplay; send \"1\n\"; expect done"
 
 # Remove problematic and unnecessary files
 rm $RPM_BUILD_ROOT%{_bindir}/%{name}/.installationinformation
@@ -50,9 +51,27 @@ sed -i "s:^.*gettext.*install.*Install to start automatically.*::" $RPM_BUILD_RO
 sed -i "s:^.*gettext.*remove.*Uninstall.*::" $RPM_BUILD_ROOT%{_initrddir}/i2p
 sed -i "s: | install | remove::" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
+# Use i2p user to run the service
+sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":" $RPM_BUILD_ROOT%{_initrddir}/i2p
+
+# Fix for upstream bug (runuser and a secure (without a shell) service account)
+# Fix: add a shell with -s /bin/sh
+sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+
 %post
 # Register the i2p service
 /sbin/chkconfig --add i2p
+
+%pre
+# Add the "i2p" user
+getent group i2p >/dev/null || groupadd -r i2p
+getent passwd i2p >/dev/null || useradd -r -g i2p -s /sbin/nologin -d /usr/local/i2p -c "I2P" i2p
+# Create the home diretory for i2p if it not exist (useradd cant do it with selinux enabled)
+if [ ! -d "/usr/local/i2p" ]; then
+	mkdir /usr/local/i2p
+	chown i2p:i2p /usr/local/i2p
+fi
+exit 0
 
 %preun
 # Unregister the i2p service
@@ -72,6 +91,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_initrddir}/i2p
 
 %changelog
+* Mon Feb 20 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-5
+- Add i2p service account
+
+* Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-4
+- Use expect for silent install
+
 * Sun Feb 19 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-3
 - Include installation folder in %files
 
