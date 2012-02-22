@@ -60,9 +60,9 @@ sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrd
 
 %post
 # Register the i2p service
-/sbin/chkconfig --add i2p
+/sbin/chkconfig --add i2p > /dev/null 2>&1
 # Start service
-service i2p start
+service i2p start > /dev/null 2>&1
 
 %pre
 # Add the "i2p" user
@@ -79,7 +79,7 @@ exit 0
 # Unregister the i2p service
 if [ $1 = 0 ]; then
 	/sbin/service i2p stop > /dev/null 2>&1
-	/sbin/chkconfig --del i2p
+	/sbin/chkconfig --del i2p > /dev/null 2>&1
 fi
 
 %clean
