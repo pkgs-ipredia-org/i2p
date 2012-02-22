@@ -1,6 +1,6 @@
 Name:		i2p
 Version:	0.8.12
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
@@ -61,6 +61,8 @@ sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrd
 %post
 # Register the i2p service
 /sbin/chkconfig --add i2p
+# Start service
+service i2p start
 
 %pre
 # Add the "i2p" user
@@ -91,6 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_initrddir}/i2p
 
 %changelog
+* Wed Feb 22 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-6
+- Add service i2p start in post installation
+
 * Mon Feb 20 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-5
 - Add i2p service account
 
