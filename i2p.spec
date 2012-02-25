@@ -63,7 +63,7 @@ sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrd
 %post
 # Register the i2p service
 /sbin/chkconfig --add i2p > /dev/null 2>&1
-# Start service (disabled)
+# Start service (disabled, need condrestart with chroot check)
 # service i2p start > /dev/null 2>&1
 
 %pre
