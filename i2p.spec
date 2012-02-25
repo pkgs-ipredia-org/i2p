@@ -10,7 +10,7 @@ Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
 Source1:	http://dist.codehaus.org/jetty/jetty-5.1.x/jetty-5.1.15.tgz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-BuildRequires:	ant
+BuildRequires:	ant expect
 Requires:	java-1.7.0-openjdk
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	chkconfig
