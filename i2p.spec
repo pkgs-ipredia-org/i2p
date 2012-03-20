@@ -97,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_initrddir}/i2p
 
 %changelog
+* Tue Mar 20 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-7
+- Condrestart return 0
+
 * Wed Feb 22 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-6
 - Add service i2p start in post installation
 
