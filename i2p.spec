@@ -1,6 +1,6 @@
 Name:		i2p
-Version:	0.8.12
-Release:	8%{?dist}
+Version:	0.8.13
+Release:	1%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
@@ -145,7 +145,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-%changelog
+* Tue Apr 3 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.13-1
+- Update to 0.8.13
+
 * Wed Mar 28 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-8
 - Add desktop sub package
 
