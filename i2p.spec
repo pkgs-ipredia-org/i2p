@@ -145,7 +145,6 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-%changelog
 * Wed Mar 28 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.12-8
 - Add desktop sub package
 
