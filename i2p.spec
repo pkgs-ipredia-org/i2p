@@ -1,17 +1,19 @@
+# Skip debug package to fix ERROR: No build ID note found in /usr/bin/i2p/i2psvc
+%define  debug_package %{nil}
+
 Name:		i2p
-Version:	0.8.13
-Release:	2%{?dist}
+Version:	0.9
+Release:	1%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
 License:	Public domain and BSD and GPL + exeption and Artistic MIT and Apache License 2.0 and Eclipse Public License 1.0 and check the source
 URL:		http://www.i2p2.de
 Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
-Source1:	http://dist.codehaus.org/jetty/jetty-5.1.x/jetty-5.1.15.tgz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-BuildRequires:	ant expect
-Requires:	java
+BuildRequires:	ant expect jetty
+Requires:	java jetty
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	chkconfig
 
@@ -36,8 +38,6 @@ This package add a desktop file for I2P Router Console.
 
 
 %build
-# Add Jetty source before build script ask about it
-cp %{SOURCE1} apps/jetty/
 ant pkg
 
 %install
@@ -145,6 +145,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun May 6 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9-1
+- Update to i2p 0.9
+
 * Tue Apr 10 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.8.13-2
 - Change from openjdk 1.7.0 to java.
 
