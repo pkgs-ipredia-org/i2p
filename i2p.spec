@@ -3,7 +3,7 @@
 
 Name:		i2p
 Version:	0.9
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
@@ -19,18 +19,6 @@ Requires(post):	chkconfig
 
 %description
 I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other. The network itself is strictly message based (a la IP), but there is a library available to allow reliable streaming communication on top of it (a la TCP). All communication is end to end encrypted (in total there are four layers of encryption used when sending a message), and even the end points ("destinations") are cryptographic identifiers (essentially a pair of public keys).
-
-
-%package desktop
-# FIXTHIS: Add xdg (xdg-open, update-desktop-database) to requires
-Summary: 	I2P Router Console desktop file
-Group: 		Applications/Internet
-Requires: 	i2p
-BuildArch: 	noarch
-
-
-%description desktop
-This package add a desktop file for I2P Router Console.
 
 
 %prep
@@ -74,25 +62,6 @@ sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 
-# Install desktop
-# FIXTHIS: Use desktop-file-install, not cat:
-# desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ %{SOURCEFILE}
-install -d %{buildroot}%{_datadir}/applications/
-cat > %{buildroot}%{_datadir}/applications/i2p.desktop << EOF
-[Desktop Entry]
-Name=I2P
-GenericName=I2P Router Console
-GenericName=[sv_SE]=I2P Routerkonsoll
-Comment=Start I2P Router Console
-Comment[sv_SE]=Starta routerkonsollen för I2P
-Exec=xdg-open http://localhost:7657
-Icon=/usr/bin/i2p/docs/themes/console/classic/images/i2plogo.png
-Terminal=false
-Type=Application
-Categories=Network;X-I2P;
-EOF
-
-
 %posttrans
 # Condrestart and return 0
 /sbin/service i2p condrestart >/dev/null 2>&1 || :
@@ -100,10 +69,6 @@ EOF
 %post
 # Register the i2p service
 /sbin/chkconfig --add i2p > /dev/null 2>&1
-
-
-%post desktop
-/usr/bin/update-desktop-database &> /dev/null || :
 
 
 %pre
@@ -125,10 +90,6 @@ if [ $1 = 0 ]; then
 fi
 
 
-%postun desktop
-/usr/bin/update-desktop-database &> /dev/null || :
-
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -140,11 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_initrddir}/i2p
 
 
-%files desktop
-%{_datadir}/applications/%{name}.desktop
-
-
 %changelog
+* Mon Jun 18 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9-2
+- Remove desktop
+
 * Sun May 6 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9-1
 - Update to i2p 0.9
 
