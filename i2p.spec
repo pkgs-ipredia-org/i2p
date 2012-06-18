@@ -12,7 +12,7 @@ URL:		http://www.i2p2.de
 Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-BuildRequires:	ant expect jetty
+BuildRequires:	ant expect jetty gettext
 Requires:	java jetty
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	chkconfig
