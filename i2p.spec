@@ -3,7 +3,7 @@
 
 Name:		i2p
 Version:	0.9
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	I2P is an anonymous network
 
 Group:		Applications/Internet
@@ -61,6 +61,9 @@ sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 # Fix: add a shell with -s /bin/sh
 sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
+# Append init order to row 2
+sed -i '2 a # chkconfig: - 99 10' $RPM_BUILD_ROOT%{_initrddir}/i2p
+
 
 %posttrans
 # Condrestart and return 0
@@ -102,6 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jul 10 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9-3
+- Add init order
+
 * Mon Jun 18 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9-2
 - Remove desktop
 
