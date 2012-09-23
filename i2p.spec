@@ -26,10 +26,15 @@ I2P is an anonymous network, exposing a simple layer that applications can use t
 
 
 %build
+# Change the home path (i2p config dir) before izpack does it
+sed -i "s:%USER_HOME:\$HOME:g" installer/resources/i2prouter
+
 ant pkg
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 echo "------!!! Install in !!!------"
 echo "Folder: $RPM_BUILD_ROOT%{_bindir}/%{name}"
 # java -jar i2pinstall* -console
