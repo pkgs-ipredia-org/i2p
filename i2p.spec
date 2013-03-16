@@ -50,6 +50,9 @@ sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/runplain.sh
 sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/wrapper.config
 sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter
 
+# Disable updates
+echo "router.updateDisabled=true" >> $RPM_BUILD_ROOT%{_bindir}/%{name}/router.config
+
 # Install i2p service (eq 'i2prouter install')
 mkdir -p $RPM_BUILD_ROOT%{_initrddir}
 install -m755 $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter $RPM_BUILD_ROOT%{_initrddir}/i2p
