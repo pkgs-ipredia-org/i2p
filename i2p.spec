@@ -12,6 +12,8 @@ URL:		http://www.i2p2.de
 Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
+Patch10: 	i2p-0.9.5-add-ipredia-host-targets.patch
+
 BuildRequires:	ant expect jetty gettext
 Requires:	java jetty
 Requires(pre):	/usr/sbin/useradd
@@ -23,6 +25,8 @@ I2P is an anonymous network, exposing a simple layer that applications can use t
 
 %prep
 %setup -q
+
+%patch10 -p1 -b .add-ipredia-host-targets.patch
 
 
 %build
