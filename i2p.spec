@@ -2,7 +2,7 @@
 %define  debug_package %{nil}
 
 Name:		i2p
-Version:	0.9.5
+Version:	0.9.6
 Release:	1%{?dist}
 Summary:	I2P is an anonymous network
 
@@ -117,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed May 29 2013 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.6-1
+- Update to 0.9.6
+
 * Sat Mar 16 2013 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.5-1
 - Update to 0.9.5
 
