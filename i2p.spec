@@ -19,8 +19,14 @@ Requires:	java jetty
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	chkconfig
 
+# Description from Slackware/i2p/slack-desc
 %description
-I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other. The network itself is strictly message based (a la IP), but there is a library available to allow reliable streaming communication on top of it (a la TCP). All communication is end to end encrypted (in total there are four layers of encryption used when sending a message), and even the end points ("destinations") are cryptographic identifiers (essentially a pair of public keys).
+I2P is an anonymizing network, offering a simple layer that
+identity-sensitive applications can use to securely communicate. All
+data is wrapped with several layers of encryption, and the network is
+both distributed and dynamic, with no trusted parties.
+Many applications are available that interface with I2P, including 
+mail, peer-peer file sharing, IRC chat, and others.
 
 
 %prep
