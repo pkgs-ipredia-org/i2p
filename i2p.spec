@@ -4,7 +4,7 @@
 Name:		i2p
 Version:	0.9.6
 Release:	1%{?dist}
-Summary:	I2P is an anonymous network
+Summary:	I2P Anonymous Network
 
 Group:		Applications/Internet
 License:	Public domain and BSD and GPL + exeption and Artistic MIT and Apache License 2.0 and Eclipse Public License 1.0 and check the source
