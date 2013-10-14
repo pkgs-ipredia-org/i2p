@@ -2,7 +2,7 @@
 %define  debug_package %{nil}
 
 Name:		i2p
-Version:	0.9.6
+Version:	0.9.7
 Release:	1%{?dist}
 Summary:	I2P Anonymous Network
 
@@ -12,7 +12,7 @@ URL:		http://www.i2p2.de
 Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-Patch10: 	i2p-0.9.6-add-ipredia-host-targets.patch
+Patch10: 	i2p-0.9.7-add-ipredia-host-targets.patch
 
 BuildRequires:	ant expect jetty gettext
 Requires:	java jetty
@@ -123,6 +123,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Oct 5 2013 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.7-1
+- Update to 0.9.7
+
 * Wed May 29 2013 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.6-1
 - Update to 0.9.6
 
