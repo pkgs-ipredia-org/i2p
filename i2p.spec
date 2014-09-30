@@ -12,7 +12,7 @@ URL:		http://www.i2p2.de
 Source0:	https://download.i2p2.de/releases/%{version}/i2psource_%{version}.tar.bz2
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
-Patch10: 	i2p-0.9.7-add-ipredia-host-targets.patch
+Patch10: 	i2p-0.9.15-add-ipredia-host-targets.patch
 
 BuildRequires:	ant expect jetty gettext
 Requires:	java jetty
