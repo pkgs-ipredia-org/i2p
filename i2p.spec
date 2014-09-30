@@ -1,5 +1,4 @@
-# Skip debug package to fix ERROR: No build ID note found in /usr/bin/i2p/i2psvc
-#%define  debug_package %{nil}
+%global _binaries_in_noarch_packages_terminate_build 0
 
 Name:		i2p
 Version:	0.9.15
