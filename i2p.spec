@@ -1,5 +1,5 @@
 # Skip debug package to fix ERROR: No build ID note found in /usr/bin/i2p/i2psvc
-%define  debug_package %{nil}
+#%define  debug_package %{nil}
 
 Name:		i2p
 Version:	0.9.15
@@ -18,6 +18,8 @@ BuildRequires:	ant expect jetty gettext
 Requires:	java jetty
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	chkconfig
+
+BuildArch:	noarch
 
 # Description from Slackware/i2p/slack-desc
 %description
