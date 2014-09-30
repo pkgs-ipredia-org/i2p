@@ -3,13 +3,13 @@
 
 Name:		i2p
 Version:	0.9.7
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	I2P Anonymous Network
 
 Group:		Applications/Internet
 License:	Public domain and BSD and GPL + exeption and Artistic MIT and Apache License 2.0 and Eclipse Public License 1.0 and check the source
 URL:		http://www.i2p2.de
-Source0:	http://mirror.i2p2.de/i2psource_%{version}.tar.bz2
+Source0:	https://download.i2p2.de/releases/%{version}/i2psource_%{version}.tar.bz2
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 Patch10: 	i2p-0.9.7-add-ipredia-host-targets.patch
@@ -123,6 +123,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 30 2014 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.7-2
+- Change source URL
+
 * Mon Oct 5 2013 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.7-1
 - Update to 0.9.7
 
