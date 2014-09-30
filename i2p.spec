@@ -2,8 +2,8 @@
 %define  debug_package %{nil}
 
 Name:		i2p
-Version:	0.9.7
-Release:	2%{?dist}
+Version:	0.9.15
+Release:	1%{?dist}
 Summary:	I2P Anonymous Network
 
 Group:		Applications/Internet
@@ -123,6 +123,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 30 2014 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.15-1
+- Update to 0.9.15
+
 * Tue Sep 30 2014 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.7-2
 - Change source URL
 
