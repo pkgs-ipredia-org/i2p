@@ -40,6 +40,10 @@ mail, peer-peer file sharing, IRC chat, and others.
 # Change the home path (i2p config dir) before izpack does it
 sed -i "s:%USER_HOME:\$HOME:g" installer/resources/i2prouter
 
+# Building EXEs in x64 Linux requires that 32bit libraries are installed
+sed -i "s:#noExe=true:noExe=true:g" build.properties
+
+
 ant pkg
 
 
