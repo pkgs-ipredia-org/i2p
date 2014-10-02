@@ -1,4 +1,4 @@
-%global _binaries_in_noarch_packages_terminate_build 0
+#%global _binaries_in_noarch_packages_terminate_build 0
 
 Name:		i2p
 Version:	0.9.15
@@ -13,7 +13,7 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 Patch10: 	i2p-0.9.15-add-ipredia-host-targets.patch
 
-BuildRequires:	ant expect jetty gettext
+BuildRequires:	ant jetty gettext
 Requires:	java jetty
 Requires(pre):	/usr/sbin/useradd
 Requires(post):	chkconfig
@@ -38,54 +38,54 @@ mail, peer-peer file sharing, IRC chat, and others.
 
 %build
 # Change the home path (i2p config dir) before izpack does it
-sed -i "s:%USER_HOME:\$HOME:g" installer/resources/i2prouter
+#sed -i "s:%USER_HOME:\$HOME:g" installer/resources/i2prouter
 
 # Building EXEs in x64 Linux requires that 32bit libraries are installed
-sed -i "s:#noExe=true:noExe=true:g" build.properties
+#sed -i "s:#noExe=true:noExe=true:g" build.properties
 
 
-ant pkg
+ant preppkg-linux-only
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-echo "------!!! Install in !!!------"
-echo "Folder: $RPM_BUILD_ROOT%{_bindir}/%{name}"
+#echo "------!!! Install in !!!------"
+#echo "Folder: $RPM_BUILD_ROOT%{_bindir}/%{name}"
 # java -jar i2pinstall* -console
-expect -c "spawn java -jar install.jar -console; expect redisplay; send \"1\r\"; expect path; send \"$RPM_BUILD_ROOT%{_bindir}/%{name}\r\"; expect redisplay; send \"1\n\"; expect done"
+#expect -c "spawn java -jar install.jar -console; expect redisplay; send \"1\r\"; expect path; send \"$RPM_BUILD_ROOT%{_bindir}/%{name}\r\"; expect redisplay; send \"1\n\"; expect done"
 
 # Remove problematic and unnecessary files
-rm $RPM_BUILD_ROOT%{_bindir}/%{name}/.installationinformation
-rm -rf $RPM_BUILD_ROOT%{_bindir}/%{name}/Uninstaller
+#rm $RPM_BUILD_ROOT%{_bindir}/%{name}/.installationinformation
+#rm -rf $RPM_BUILD_ROOT%{_bindir}/%{name}/Uninstaller
 
 # Strip buildroot from files
-sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/eepget
-sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/runplain.sh
-sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/wrapper.config
-sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter
+#sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/eepget
+#sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/runplain.sh
+#sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/wrapper.config
+#sed -i "s:$RPM_BUILD_ROOT::g" $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter
 
 # Disable updates
-echo "router.updateDisabled=true" >> $RPM_BUILD_ROOT%{_bindir}/%{name}/router.config
+#echo "router.updateDisabled=true" >> $RPM_BUILD_ROOT%{_bindir}/%{name}/router.config
 
 # Install i2p service (eq 'i2prouter install')
-mkdir -p $RPM_BUILD_ROOT%{_initrddir}
-install -m755 $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter $RPM_BUILD_ROOT%{_initrddir}/i2p
+#mkdir -p $RPM_BUILD_ROOT%{_initrddir}
+#install -m755 $RPM_BUILD_ROOT%{_bindir}/%{name}/i2prouter $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Remove redundant functionality from i2p service
-sed -i "s:^.*gettext.*install.*Install to start automatically.*::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
-sed -i "s:^.*gettext.*remove.*Uninstall.*::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
-sed -i "s: | install | remove::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+#sed -i "s:^.*gettext.*install.*Install to start automatically.*::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+#sed -i "s:^.*gettext.*remove.*Uninstall.*::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+#sed -i "s: | install | remove::g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Use i2p user to run the service
-sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+#sed -i "s:^#RUN_AS_USER=:RUN_AS_USER=\"i2p\":g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Fix for upstream bug (runuser and a secure (without a shell) service account)
 # Fix: add a shell with -s /bin/sh
-sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrddir}/i2p
+#sed -i "s:/sbin/runuser -:/sbin/runuser -s /bin/sh -:g" $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 # Append init order to row 2
-sed -i '2 a # chkconfig: - 99 10' $RPM_BUILD_ROOT%{_initrddir}/i2p
+#sed -i '2 a # chkconfig: - 99 10' $RPM_BUILD_ROOT%{_initrddir}/i2p
 
 
 %posttrans
