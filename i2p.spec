@@ -87,6 +87,9 @@ rm -rf $RPM_BUILD_ROOT
 # Append init order to row 2
 #sed -i '2 a # chkconfig: - 99 10' $RPM_BUILD_ROOT%{_initrddir}/i2p
 
+install -d $RPM_BUILD_ROOT%{_bindir}
+install -m 755 pkg-temp/i2prouter $RPM_BUILD_ROOT%{_bindir}/
+
 install -d $RPM_BUILD_ROOT%{_javadir}/%{name}
 install -m644 pkg-temp/lib/*.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/
 
@@ -129,6 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_bindir}/%{name}
 #%{_initrddir}/i2p
 %{_javadir}/%{name}/
+$RPM_BUILD_ROOT%{_bindir}/i2prouter
 
 
 %changelog
