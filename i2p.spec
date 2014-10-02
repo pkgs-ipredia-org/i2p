@@ -126,8 +126,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc
-%{_bindir}/%{name}
-%{_initrddir}/i2p
+#%{_bindir}/%{name}
+#%{_initrddir}/i2p
+%{_javadir}/%{name}/
 
 
 %changelog
