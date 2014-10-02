@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 echo "------!!! Install in !!!------"
 echo "Folder: $RPM_BUILD_ROOT%{_bindir}/%{name}"
 # java -jar i2pinstall* -console
-expect -c "spawn java -jar i2pinstall.jar -console; expect redisplay; send \"1\r\"; expect path; send \"$RPM_BUILD_ROOT%{_bindir}/%{name}\r\"; expect redisplay; send \"1\n\"; expect done"
+expect -c "spawn java -jar install.jar -console; expect redisplay; send \"1\r\"; expect path; send \"$RPM_BUILD_ROOT%{_bindir}/%{name}\r\"; expect redisplay; send \"1\n\"; expect done"
 
 # Remove problematic and unnecessary files
 rm $RPM_BUILD_ROOT%{_bindir}/%{name}/.installationinformation
