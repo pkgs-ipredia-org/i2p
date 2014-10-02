@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_bindir}/%{name}
 #%{_initrddir}/i2p
 %{_javadir}/%{name}/
-$RPM_BUILD_ROOT%{_bindir}/i2prouter
+%{_bindir}/i2prouter
 
 
 %changelog
