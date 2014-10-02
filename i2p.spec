@@ -87,6 +87,9 @@ rm -rf $RPM_BUILD_ROOT
 # Append init order to row 2
 #sed -i '2 a # chkconfig: - 99 10' $RPM_BUILD_ROOT%{_initrddir}/i2p
 
+install -d $RPM_BUILD_ROOT%{_javadir}/%{name}
+install -m644 pkg-temp/lib/*.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/
+
 
 %posttrans
 # Condrestart and return 0
