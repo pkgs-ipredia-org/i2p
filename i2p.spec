@@ -43,8 +43,9 @@ mail, peer-peer file sharing, IRC chat, and others.
 # Building EXEs in x64 Linux requires that 32bit libraries are installed
 #sed -i "s:#noExe=true:noExe=true:g" build.properties
 
-
-ant preppkg-linux-only
+# Lite oklart vilken preppkg som ska köras. Target "debian" kör debian/rules som i sin tur kör ant
+# javadoc måste i alla fall komma med
+ant preppkg-linux-only javadoc
 
 
 %install
