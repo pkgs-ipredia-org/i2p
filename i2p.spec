@@ -90,117 +90,83 @@ rm -rf $RPM_BUILD_ROOT
 
 
 #Processing debian/i2p-doc.install
-install -d %{_javadocdir}/%{name}
+# Commands for debian/i2p-doc.install:
+# Folders
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}
+# Content
 cp -R build/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 #Processing debian/i2p.install
-install -d %{_bindir}
+# Commands for debian/i2p.install:
+# Folders
+install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+# Content
 install pkg-temp/i2prouter $RPM_BUILD_ROOT%{_bindir}
-install -d %{_sysconfdir}/%{name}
 install pkg-temp/wrapper.config $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
-install -d %{_datadir}/%{name}
 cp -R pkg-temp/locale $RPM_BUILD_ROOT%{_datadir}/%{name}
 #Processing debian/i2p-router.install
-install -d %{_datadir}/%{name}
-install history.txt $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-install pkg-temp/blocklist.txt $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-cp -R pkg-temp/certificates $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-install pkg-temp/clients.config $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-cp -R pkg-temp/docs $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_bindir}
-install pkg-temp/eepget $RPM_BUILD_ROOT%{_bindir}
-install -d %{_datadir}/%{name}
-cp -R pkg-temp/eepsite $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-cp -R pkg-temp/geoip $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-install pkg-temp/hosts.txt $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_bindir}
 #Source finns inte: pkg-temp/i2prouter-nowrapper
-install -d %{_datadir}/%{name}
-install pkg-temp/i2psnark.config $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
-install pkg-temp/i2ptunnel.config $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
 #Source finns inte: pkg-temp/router.config
-install -d %{_datadir}/%{name}
+# Commands for debian/i2p-router.install:
+# Folders
+install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
+install -d $RPM_BUILD_ROOT%{_javadir}/%{name}
+# Content
+install history.txt $RPM_BUILD_ROOT%{_datadir}/%{name}
+install pkg-temp/blocklist.txt $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -R pkg-temp/certificates $RPM_BUILD_ROOT%{_datadir}/%{name}
+install pkg-temp/clients.config $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -R pkg-temp/docs $RPM_BUILD_ROOT%{_datadir}/%{name}
+install pkg-temp/eepget $RPM_BUILD_ROOT%{_bindir}
+cp -R pkg-temp/eepsite $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -R pkg-temp/geoip $RPM_BUILD_ROOT%{_datadir}/%{name}
+install pkg-temp/hosts.txt $RPM_BUILD_ROOT%{_datadir}/%{name}
+install pkg-temp/i2psnark.config $RPM_BUILD_ROOT%{_datadir}/%{name}
+install pkg-temp/i2ptunnel.config $RPM_BUILD_ROOT%{_datadir}/%{name}
 install pkg-temp/systray.config $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_datadir}/%{name}
 cp -R pkg-temp/webapps $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/BOB.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/commons-el.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/commons-logging.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/desktopgui.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/i2p.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/i2psnark.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/i2ptunnel.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jasper-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/javax.servlet.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-continuation.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-deploy.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-http.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-i2p.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-io.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-rewrite-handler.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-security.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-servlet.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-servlets.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-start.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-util.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-webapp.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jetty-xml.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jrobin.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/jstl.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/mstreaming.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/org.mortbay.jetty.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/org.mortbay.jmx.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/routerconsole.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/router.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/sam.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/standard.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/streaming.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/systray4j.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
-install -d %{_javadir}/%{name}
 install pkg-temp/lib/systray.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 #Processing debian/libjbigi-jni.install
-install -d %{_jnidir}
 #Source finns inte: core/c/jbigi/*.so
+# Commands for debian/libjbigi-jni.install:
+# Folders
+install -d $RPM_BUILD_ROOT%{_jnidir}
+# Content
 
 
 %posttrans
