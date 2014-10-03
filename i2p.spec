@@ -206,9 +206,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc
 #%{_bindir}/%{name}
 #%{_initrddir}/i2p
-%{_javadir}/%{name}/
-%{_bindir}/i2prouter
-
+%{_jnidir}
+%{_javadir}/%{name}
+%{_bindir}
+%{_datadir}/%{name}
+%{_sysconfdir}/%{name}
 
 %changelog
 * Tue Sep 30 2014 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.15-1
