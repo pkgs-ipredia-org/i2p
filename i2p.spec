@@ -211,6 +211,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}
 %{_datadir}/%{name}
 %{_sysconfdir}/%{name}
+%{_javadocdir}/%{name}
 
 %changelog
 * Tue Sep 30 2014 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.15-1
