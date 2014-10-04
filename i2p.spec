@@ -30,6 +30,9 @@ Many applications are available that interface with I2P, including
 mail, peer-peer file sharing, IRC chat, and others.
 
 
+%package router
+
+
 %prep
 %setup -q
 
