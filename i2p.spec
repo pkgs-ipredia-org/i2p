@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 # Content
 cp -R build/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
+# Include
 #Processing debian/i2p.install
 # Commands for debian/i2p.install:
 # Folders
@@ -105,6 +106,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 install pkg-temp/i2prouter $RPM_BUILD_ROOT%{_bindir}
 install pkg-temp/wrapper.config $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 cp -R pkg-temp/locale $RPM_BUILD_ROOT%{_datadir}/%{name}
+# Include
 #Processing debian/i2p-router.install
 #Source finns inte: pkg-temp/i2prouter-nowrapper
 #Source finns inte: pkg-temp/router.config
@@ -161,12 +163,14 @@ install pkg-temp/lib/standard.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 install pkg-temp/lib/streaming.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 install pkg-temp/lib/systray4j.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 install pkg-temp/lib/systray.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
+# Include
 #Processing debian/libjbigi-jni.install
 #Source finns inte: core/c/jbigi/*.so
 # Commands for debian/libjbigi-jni.install:
 # Folders
-install -d $RPM_BUILD_ROOT%{_jnidir}
+#install -d $RPM_BUILD_ROOT%{_jnidir}
 # Content
+# Include
 
 
 %posttrans
@@ -204,14 +208,56 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc
-#%{_bindir}/%{name}
-#%{_initrddir}/i2p
-%{_jnidir}
-%{_javadir}/%{name}
-%{_bindir}
-%{_datadir}/%{name}
-%{_sysconfdir}/%{name}
 %{_javadocdir}/%{name}
+%{_bindir}/i2prouter
+%{_datadir}/%{name}
+%{_sysconfdir}/%{name}/wrapper.config
+%{_bindir}/eepget
+%{_datadir}/%{name}
+%{_datadir}/%{name}/blocklist.txt
+%{_datadir}/%{name}/clients.config
+%{_datadir}/%{name}/history.txt
+%{_datadir}/%{name}/hosts.txt
+%{_datadir}/%{name}/i2psnark.config
+%{_datadir}/%{name}/i2ptunnel.config
+%{_datadir}/%{name}/systray.config
+%{_javadir}/%{name}/BOB.jar
+%{_javadir}/%{name}/commons-el.jar
+%{_javadir}/%{name}/commons-logging.jar
+%{_javadir}/%{name}/desktopgui.jar
+%{_javadir}/%{name}/i2p.jar
+%{_javadir}/%{name}/i2psnark.jar
+%{_javadir}/%{name}/i2ptunnel.jar
+%{_javadir}/%{name}/jasper-runtime.jar
+%{_javadir}/%{name}/javax.servlet.jar
+%{_javadir}/%{name}/jetty-continuation.jar
+%{_javadir}/%{name}/jetty-deploy.jar
+%{_javadir}/%{name}/jetty-http.jar
+%{_javadir}/%{name}/jetty-i2p.jar
+%{_javadir}/%{name}/jetty-io.jar
+%{_javadir}/%{name}/jetty-rewrite-handler.jar
+%{_javadir}/%{name}/jetty-security.jar
+%{_javadir}/%{name}/jetty-servlet.jar
+%{_javadir}/%{name}/jetty-servlets.jar
+%{_javadir}/%{name}/jetty-start.jar
+%{_javadir}/%{name}/jetty-util.jar
+%{_javadir}/%{name}/jetty-webapp.jar
+%{_javadir}/%{name}/jetty-xml.jar
+%{_javadir}/%{name}/jrobin.jar
+%{_javadir}/%{name}/jstl.jar
+%{_javadir}/%{name}/mstreaming.jar
+%{_javadir}/%{name}/org.mortbay.jetty.jar
+%{_javadir}/%{name}/org.mortbay.jmx.jar
+%{_javadir}/%{name}/routerconsole.jar
+%{_javadir}/%{name}/router.jar
+%{_javadir}/%{name}/sam.jar
+%{_javadir}/%{name}/standard.jar
+%{_javadir}/%{name}/streaming.jar
+%{_javadir}/%{name}/systray4j.jar
+%{_javadir}/%{name}/systray.jar
+
+
+
 
 %changelog
 * Tue Sep 30 2014 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 0.9.15-1
