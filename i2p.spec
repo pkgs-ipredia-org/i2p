@@ -13,6 +13,7 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 Patch10: 	i2p-0.9.15-add-ipredia-host-targets.patch
 Patch20:	i2p-0.9.15-eepget-classpath.patch
+Patch21:	i2p-0.9.15-java-service-wrapper-config.patch
 
 BuildRequires:	ant jetty gettext
 Requires:	java jetty
@@ -45,6 +46,7 @@ trusted parties.
 
 %patch10 -p1 -b .add-ipredia-host-targets.patch
 %patch20 -p1 -b .eepget-classpath.patch
+%patch21 -p1 -b .java-service-wrapper-config.patch
 
 %build
 # Change the home path (i2p config dir) before izpack does it
