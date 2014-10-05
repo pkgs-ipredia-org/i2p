@@ -20,18 +20,23 @@ Requires(post):	chkconfig
 
 BuildArch:	noarch
 
-# Description from Slackware/i2p/slack-desc
+# Description from debian/control
 %description
-I2P is an anonymizing network, offering a simple layer that
-identity-sensitive applications can use to securely communicate. All
-data is wrapped with several layers of encryption, and the network is
-both distributed and dynamic, with no trusted parties.
-Many applications are available that interface with I2P, including 
-mail, peer-peer file sharing, IRC chat, and others.
+I2P is an anonymizing network, offering a simple layer that identity-sensitive
+applications can use to securely communicate. All data is wrapped with several
+layers of encryption, and the network is both distributed and dynamic, with no
+trusted parties.
 
 
 %package router
 Summary:	I2P Anonymous Network
+
+
+%description router
+I2P is an anonymizing network, offering a simple layer that identity-sensitive
+applications can use to securely communicate. All data is wrapped with several
+layers of encryption, and the network is both distributed and dynamic, with no
+trusted parties.
 
 
 %prep
