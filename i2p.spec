@@ -216,6 +216,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_sysconfdir}/%{name}/wrapper.config
 %{_bindir}/eepget
+
+%files router
 %{_datadir}/%{name}
 %{_datadir}/%{name}/blocklist.txt
 %{_datadir}/%{name}/clients.config
