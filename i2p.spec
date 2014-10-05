@@ -31,6 +31,7 @@ mail, peer-peer file sharing, IRC chat, and others.
 
 
 %package router
+Summary:	I2P Anonymous Network
 
 
 %prep
